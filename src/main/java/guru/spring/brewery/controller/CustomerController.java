@@ -1,6 +1,6 @@
 package guru.spring.brewery.controller;
 
-import guru.spring.brewery.models.CustomerDTO;
+import guru.spring.brewery.models.CustomerDto;
 import guru.spring.brewery.services.CustomerService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,13 +21,13 @@ public class CustomerController {
     }
 
     @GetMapping("/{customerId}")
-    public ResponseEntity<CustomerDTO> getCustomer(@PathVariable("customerId") UUID customerId) {
+    public ResponseEntity<CustomerDto> getCustomer(@PathVariable("customerId") UUID customerId) {
         return new ResponseEntity<>(customerService.getCustomerById(customerId), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity handlerPost(@Valid @RequestBody CustomerDTO customerDTO) {
-        CustomerDTO savedDto = customerService.saveNewCustomer(customerDTO);
+    public ResponseEntity handlerPost(@Valid @RequestBody CustomerDto customerDTO) {
+        CustomerDto savedDto = customerService.saveNewCustomer(customerDTO);
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location", "/api/v1/customer/" + savedDto.getId().toString());
@@ -37,7 +37,7 @@ public class CustomerController {
 
     @PutMapping("/{customerId")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void handlerUpdate(@PathVariable("customerId") UUID customerId, @Valid @RequestBody CustomerDTO customerDTO) {
+    public void handlerUpdate(@PathVariable("customerId") UUID customerId, @Valid @RequestBody CustomerDto customerDTO) {
         customerService.updateCustomer(customerId, customerDTO);
     }
 

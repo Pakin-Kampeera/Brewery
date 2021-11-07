@@ -1,15 +1,15 @@
 package guru.spring.brewery.services;
 
-import guru.spring.brewery.models.CustomerDTO;
+import guru.spring.brewery.models.CustomerDto;
 
 import java.util.UUID;
 
 public interface CustomerService {
-    CustomerDTO getCustomerById(UUID customerId);
+    CustomerDto getCustomerById(UUID customerId);
 
-    CustomerDTO saveNewCustomer(CustomerDTO customerDTO);
+    CustomerDto saveNewCustomer(CustomerDto customerDTO);
 
-    void updateCustomer(UUID customerId, CustomerDTO customerDTO);
+    void updateCustomer(UUID customerId, CustomerDto customerDTO);
 
     void deleteCustomer(UUID customerId);
 }
